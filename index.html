@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Image</title>
+    <meta name="description" content="Free Online Image Editor resize crop avatars and images. Photo tool for your favorite pictures. Edit an image here fast and easy online. Edit image for government exam, UPSC, SSC, Railways, IIT-JEE, bank">
+    <meta name="keywords" content="image editor, image crop, image edit online, easy image editing, crop image, resize, image resize, resize my photo, resize my signature, signature crop, signature editing, exam, upsc, bank, ssc, railways">
+    <link rel="stylesheet" href="/static/index.css">
+    <link rel='stylesheet' media='screen and (max-width: 380px)' href='/static/mobile.css' />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,700;0,800;0,900;1,200&display=swap">
+    <link rel="icon" href="/static/logo.svg" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/static/logo.svg" type="image/x-icon"/>
+    <script>
+
+        function filesize(elem){
+          document.cookie = `filesize=${elem.files[0].size}`
+        }
+      
+    </script>
+</head>
+<body>
+    <img src="/static/logo.svg" alt="logo" id="logo">
+    <br>
+    <span style="margin-left: 120px; font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 25px; color: #696969; @media screen {
+      font-family: 'Nunito';
+      font-weight: '600';
+      font-size: 18px;
+      margin-left: 150px  
+    }">Exam Image</span>
+    <div class="form-box">
+        <form id="Preset-form" name="preset_data" action="/handle-upload" method="POST" enctype="multipart/form-data">
+            <h2 id="preset">Preset</h2>
+            <br>
+            <label>Exam</label>
+                <select id="exam" name="exam">
+                    <option value="UPSC">UPSC</option>
+                    <option value="SSC-CHSL">SSC-CHSL</option>
+                    <option value="SSC">SSC</option>
+                    <option value="RAILWAYS">RAILWAYS</option>
+                    <option value="IBPS">IBPS BANK</option>
+                    <option value="IITJEE">IIT-JEE</option>
+                    <option value="CLAT">CLAT</option>
+                    <option value="CAT">CAT</option> 
+                    <option value="XAT">XAT</option>
+                </select>
+            <br>    
+            <label id="doc">Document</label>
+                <select id="document" name="document">
+                    <option value="IDENTITY">IDENTITY IMAGE</option>
+                    <option value="SIGNATURE">SIGNATURE IMAGE</option>
+            </select> 
+            <br>
+            <label id="upload">Upload Image</label>
+                <input type="file" id="image-box-preset" name="photo" oninput="filesize(this);" required>
+            <br>    
+            <button id="preset-submit" type="submit" value="submit">Submit</button>
+        </form>
+        <div class="form-line"></div>
+        <form id="Custom-form" name="custom_data" action="/handle-custom-upload" method="POST" enctype="multipart/form-data">
+            <h2 id="custom">Custom</h2>
+            <label id="height">Height</label>
+                <input id="height-custom" type="number" name="height" placeholder="Height in pixel" required>
+                <br>
+            <label id="width">Width</label>
+                <input id="width-custom" type="number" name="width" placeholder="Width in pixel" required>
+                <br>
+                <label>Exam</label>
+                <select id="size-custom" name="exam" required>
+                    <option value="UPSC">UPSC</option>
+                    <option value="SSC-CHSL">SSC-CHSL</option>
+                    <option value="SSC">SSC</option>
+                    <option value="RAILWAYS">RAILWAYS</option>
+                    <option value="IBPS">IBPS BANK</option>
+                    <option value="IITJEE">IIT-JEE</option>
+                    <option value="CLAT">CLAT</option>
+                    <option value="CAT">CAT</option> 
+                    <option value="XAT">XAT</option>
+                </select>
+                <br>
+            <label id="Upload-custom">Upload Image</label>
+                <input type="file" id="image-box-custom" name="photo" oninput="filesize(this);" required>
+            <br>    
+            <button id="custom-submit" type="submit" value="submit">Submit</button>
+        </form>
+    </div>
+    <div class="error-box">
+        <h4 style="font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 15px; color: #696969; text-align: center; padding-top: 5px;">Error Message</h4>
+        <br>
+        <h6 style="font-family: 'Nunito';color: red; font-size: 14px; text-align: center;">{{message}}</h6>
+    </div>
+</body>
+</html>
